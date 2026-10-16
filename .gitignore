@@ -40,3 +40,5 @@ coverage/
 ._*
 Thumbs.db
 Desktop.ini
+
+.agents/
