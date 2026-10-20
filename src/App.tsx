@@ -218,6 +218,16 @@ function App() {
   }
 
   function changeShift(nextShift: Shift) {
+    if (nextShift !== shift) {
+      setDate((currentDate) => {
+        const shiftDate = parseDateInput(currentDate)
+        if (!shiftDate) return currentDate
+
+        shiftDate.setDate(shiftDate.getDate() + (nextShift === '夜班' ? -1 : 1))
+        return dateForInput(shiftDate)
+      })
+    }
+
     setShift(nextShift)
     if (nextShift === '夜班') {
       setStartTime('20:00')
